@@ -6,21 +6,23 @@ SELECT
   lower(event_type_name) AS event_type_name,
   cancellation,
   status,
-  
+
 IF
+  ( REGEXP_CONTAINS(event_type_name, r"(?i)Chat with a SplitSpot" ), "One-on-one calls",
+  IF
   ( ARRAY_LENGTH(SPLIT(event_type_name, '-'))>1,
   IF
-    ( REGEXP_CONTAINS(SPLIT(event_type_name, '-')[
-      OFFSET
-        (1)], r"(?i) chat"),
-      "One-on-one Chat",
+    ( REGEXP_CONTAINS(event_type_name, r"(?i)Tour"),
+      "In-Person Showings",
     IF
       ( REGEXP_CONTAINS(SPLIT(event_type_name, '-')[
         OFFSET
-          (1)], r"(?i) 3d"),
+          (1)], r"(?i)3d"),
         "3D Showings",
         "Live Showings (E)" ) ),
-    "Live Showings" ) AS event_type
+    "Live Showings")
+   ) AS event_type
 FROM
   `natural-rider-307113.calendly.calendly_stats`
-   ORDER BY full_date DESC
+WHERE cancellation IS NULL
+ORDER BY created_at DESC
