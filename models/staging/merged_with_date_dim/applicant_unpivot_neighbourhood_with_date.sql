@@ -3,7 +3,7 @@ WITH
   SELECT
     *
   FROM
-    {{ ref('applicant_unpivot_neighbourhood') }}),
+    {{ ref('applicant_neighbourhood') }}),
   date_dim AS (
   SELECT
     *

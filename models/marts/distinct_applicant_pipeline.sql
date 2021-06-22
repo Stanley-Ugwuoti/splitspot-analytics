@@ -1,6 +1,8 @@
 {{ config(materialized='table', sort='timestamp', dist='user_id') }}
 
 SELECT
+  COALESCE(applications.month, leases_signed.month,leases_sent.month,roommate.month,rsvps.month) as month,
+  COALESCE(applications.year_week, leases_signed.year_week,leases_sent.year_week,roommate.year_week,rsvps.year_week) as year_week,
   COALESCE(applications.id, leases_signed.id,leases_sent.id,roommate.id,rsvps.id) as full_date,
   COALESCE(applications.customer_id,leases_signed.customer_id,leases_sent.customer_id,roommate.customer_id,rsvps.customer_id) as customer_id,
   IFNULL(applications.count_of_applications,0) as applications,

@@ -1,27 +1,28 @@
 {{ config(materialized='table', sort='timestamp', dist='user_id') }}
 
-  WITH
-  leases_sent AS (
+
+WITH
+  applications AS (
   SELECT
     *
   FROM
-    {{ ref('distinct_applicants') }}
+    {{ ref('applicant_unpivot_neighbourhood_with_date') }}
   WHERE
-    full_date IS NOT NULL )
+    neighbourhood IS NOT NULL )
 SELECT
   id,
   year_week,
   month,
   fiscal_year,
-  customer_id,
+  neighbourhood,
   COUNT(*) AS count_of_applications
 FROM
-  leases_sent
+  applications
 GROUP BY
   id,
   year_week,
   month,
   fiscal_year,
-  customer_id
+  neighbourhood
 ORDER BY
-  id DESC
+  count_of_applications DESC

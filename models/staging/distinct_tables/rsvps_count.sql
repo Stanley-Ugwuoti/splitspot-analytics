@@ -11,6 +11,7 @@
 SELECT
   id,
   year_week,
+  month,
   fiscal_year,
   customer_id,
   COUNT(*) AS count_of_rsvps
@@ -19,6 +20,7 @@ FROM
 GROUP BY
   id,
   year_week,
+  month,
   fiscal_year,
   customer_id
 ORDER BY

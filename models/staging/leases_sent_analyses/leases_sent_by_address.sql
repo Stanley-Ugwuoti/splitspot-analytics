@@ -11,6 +11,7 @@
 SELECT
   id,
   year_week,
+  month,
   fiscal_year,
   address_id,
   COUNT(*) AS leases_sent
@@ -19,6 +20,7 @@ FROM
 GROUP BY
   id,
   year_week,
+  month,
   fiscal_year,
   address_id
 ORDER BY

@@ -10,6 +10,7 @@
     full_date IS NOT NULL )
 SELECT
   id,
+  year_week,
   month,
   fiscal_year,
   customer_id,
@@ -18,6 +19,7 @@ FROM
   leases_sent
 GROUP BY
   id,
+  year_week,
   month,
   fiscal_year,
   customer_id

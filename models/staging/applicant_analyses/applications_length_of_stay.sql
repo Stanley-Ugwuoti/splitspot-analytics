@@ -9,6 +9,7 @@ WITH
     full_date IS NOT NULL )
 SELECT
   id,
+  year_week,
   month,
   fiscal_year,
   lower(est_length_of_stay) as intended_length_of_stay,
@@ -17,6 +18,7 @@ FROM
   applications
 GROUP BY
   id,
+  year_week,
   month,
   fiscal_year,
   intended_length_of_stay
