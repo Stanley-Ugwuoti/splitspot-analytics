@@ -1,9 +1,15 @@
+-- number of applicants and sources from different sources.
+
 {{ config(materialized='table', sort='timestamp', dist='user_id') }}
 
 SELECT
 
   COALESCE(applications.id,
     leases_signed.id) AS full_date,
+  COALESCE(applications.year_week,
+    leases_signed.year_week) AS year_week,
+  COALESCE(applications.month,
+    leases_signed.month) AS month,  
   COALESCE(applications.source,
     leases_signed.source) AS contact_source,
   IFNULL(leases_signed.no_of_leases,

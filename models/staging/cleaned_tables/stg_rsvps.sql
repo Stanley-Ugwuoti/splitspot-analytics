@@ -1,4 +1,4 @@
--- rsvp stats still in development
+-- rsvp stats from calendly
 SELECT
   lower(name) AS name,
   lower(email) AS customer_id,

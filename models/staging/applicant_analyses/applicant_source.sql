@@ -8,6 +8,7 @@
     full_date IS NOT NULL )
 SELECT
   id,
+  year_week,
   month,
   fiscal_year,
   lower(contact_source) as source,
@@ -16,6 +17,7 @@ FROM
   applicants
 GROUP BY
   id,
+  year_week,
   month,
   fiscal_year,
   source

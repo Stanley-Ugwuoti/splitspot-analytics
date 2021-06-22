@@ -12,6 +12,7 @@ WITH
 SELECT
   id,
   year_week,
+  month,
   fiscal_year,
   address_id,
   COUNT(*) AS count_of_applications
@@ -20,6 +21,7 @@ FROM
 GROUP BY
   id,
   year_week,
+  month,
   fiscal_year,
   address_id
 ORDER BY

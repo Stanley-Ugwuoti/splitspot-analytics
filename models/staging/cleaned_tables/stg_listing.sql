@@ -21,7 +21,7 @@ WITH
     web_site,
     couples_allowed,
     lower(split(current_roommate_email_address, '; ')[SAFE_OFFSET(0)]) as current_tenant,
-    lower(split(current_roommate_email_address, '; ')[SAFE_OFFSET(1)]) as roommate
+    lower(current_roommate) as splitspot_tenant
   FROM
     `natural-rider-307113.apartment.listings`
   WHERE

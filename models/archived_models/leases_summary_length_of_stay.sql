@@ -1,3 +1,4 @@
+-- weekly granularity
 WITH
   leases AS (
   SELECT
@@ -7,19 +8,17 @@ WITH
   WHERE
     full_date IS NOT NULL )
 SELECT
-  id,
+  fiscal_year,
   year_week,
   month,
-  fiscal_year,
-  lower(source) as source,
+  intended_length_of_stay,
   COUNT(*) AS no_of_leases
 FROM
   leases
 GROUP BY
-  id,
+  fiscal_year,
   year_week,
   month,
-  fiscal_year,
-  source
+  intended_length_of_stay
 ORDER BY
   no_of_leases DESC
