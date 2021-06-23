@@ -17,7 +17,8 @@ WITH
     est_length_of_stay,
     pets_ as have_pets,
     lower(ok_living_with_pets_) as ok_living_with_pets_,
-    SAFE_CAST(monthly_gross_salary AS NUMERIC) as monthly_gross_salary
+    SAFE_CAST(monthly_gross_salary AS NUMERIC) as monthly_gross_salary,
+    lower(occupation) as occupation
   FROM
     `natural-rider-307113.customer.applications_response_import`
   WHERE

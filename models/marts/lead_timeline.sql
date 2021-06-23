@@ -7,6 +7,8 @@ SELECT
   applications.age,
   applications.apartment_of_interest,
   applications.est_length_of_stay as application_length_of_stay,
+  applications.occupation,
+
   rsvps.id as rsvps_date,
   rsvps.event_type,
   roommate.id as roommate_introductions_date,
