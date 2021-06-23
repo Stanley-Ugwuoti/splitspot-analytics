@@ -8,7 +8,7 @@ WITH
     REPLACE(value,' ','-') AS neighbourhood,
     customer_id,
   FROM
-    {{ ref('applicant_unpivot_neighbourhood_with_date') }}
+    {{ ref('applicant_unpivot_neighbourhood') }}
   WHERE
     full_date IS NOT NULL)
 SELECT

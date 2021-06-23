@@ -9,7 +9,7 @@ SELECT
     leases_signed.month) AS month, 
   COALESCE(applications.neighbourhood,
     leases_signed.neighbourhood) AS neighbourhood,
-  IFNULL(applications.count_of_applicants,
+  IFNULL(applications.count_of_applications,
     0) AS no_of_applicants,
   IFNULL(leases_signed.no_of_leases,
     0) AS no_of_leases,
