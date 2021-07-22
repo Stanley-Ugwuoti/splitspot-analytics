@@ -6,7 +6,7 @@ WITH
     LOWER(REPLACE(address_unit,' ','-')) AS address_id,
     Date(date_on_boarded) as date_onboarded,
     google_sheets_id,
-    LOWER(city) AS city,
+    LOWER(metro_area) AS city,
     LOWER(neighborhood) AS neighborhood,
     room,
     SAFE_CAST(price AS NUMERIC) AS price,

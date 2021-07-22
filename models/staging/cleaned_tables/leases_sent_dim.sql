@@ -22,5 +22,5 @@ WITH
   WHERE
     date_sent IS NOT NULL)
 SELECT * FROM leases_sent
-Order by full_date DESC;
+Order by full_date DESC
 

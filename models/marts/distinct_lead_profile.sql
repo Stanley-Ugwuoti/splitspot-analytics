@@ -1,3 +1,6 @@
+{{ config(materialized='table', sort='timestamp', dist='user_id') }}
+
+
 WITH
   customers AS (
   SELECT
