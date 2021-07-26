@@ -81,13 +81,39 @@ SELECT
   buildium_data.room_id,
   buildium_data.status,
   buildium_data.start_date,
- -- buildium_data.end_date as buildium_end_date,
+  buildium_data.end_date as buildium_end_date,
   buildium_data.projected_end_date as actual_end_date,
   buildium_data.rent_duration as buildium_rent_duration,
-  buildium_data.rent_type,
+
+  CASE WHEN buildium_data.rent_duration > 10 THEN '10 months and above'
+    WHEN buildium_data.rent_duration > 5 THEN '6-9 months'
+    WHEN buildium_data.rent_duration < 6 THEN '3-5 months'
+
+    ELSE 'Not Specified' END
+
+      AS buildium_rent_duration_category,
+
+buildium_data.rent_type,
+
+stg_feedback.full_date,		
+stg_feedback.customer_id,		
+stg_feedback.full_name,
+stg_feedback.address_id,		
+stg_feedback.intended_move_out_date,		
+stg_feedback.four_month_notice,		
+stg_feedback.reason_for_termination,		
+stg_feedback.interested_in_other_splitspot_rooms,
+stg_feedback.moving_out_agreement,		
+stg_feedback.positive_feedback,		
+stg_feedback.rating,
+stg_feedback.critical_feedback
 
 FROM
-  `natural-rider-307113`.`dbt_kamalsplitspot`.`lead_timeline` as lead_timeline
-FULL JOIN  `natural-rider-307113`.`dbt_kamalsplitspot`.`buildium_tenancy` AS buildium_data
+{{ ref('lead_timeline') }} as lead_timeline
+FULL JOIN {{ ref('buildium_tenancy') }} AS buildium_data
 ON
   lead_timeline.customer_id = buildium_data.customer_id
+
+FULL JOIN {{ ref('stg_feedback') }} AS stg_feedback
+ON
+  lead_timeline.customer_id = stg_feedback.customer_id

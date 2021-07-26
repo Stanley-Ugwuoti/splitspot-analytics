@@ -10,7 +10,6 @@ WITH
     LOWER(neighborhood) AS neighborhood,
     room,
     SAFE_CAST(price AS NUMERIC) AS price,
-    LOWER(showing_territory) as showing_territory,
     LOWER(furnished) AS furnished,
     LOWER(status) AS status,
     LOWER(date) AS date_availaible,
@@ -18,8 +17,6 @@ WITH
     date(move_in_date) as move_in_date,
     lower(building_pet_rule) as building_pet_rule,
     lower(personal_pet_situation) as personal_pet_situation,
-    web_site,
-    couples_allowed,
     lower(split(current_roommate_email_address, '; ')[SAFE_OFFSET(0)]) as current_tenant,
     lower(current_roommate) as splitspot_tenant
   FROM

@@ -5,7 +5,7 @@ WITH
   SELECT
     *
   FROM
-  {{ ref('distinct_applicant_pipeline') }}
+  {{ ref('applicant_pipeline') }}
 )
 
 SELECT
