@@ -7,7 +7,7 @@ SELECT
     lead_timeline.rsvps_date) AS full_date,
 
   COALESCE(lead_timeline.customer_id,
-    buildium_data.customer_id) AS customer_id,
+    buildium_data.customer_id, stg_feedback.customer_id ) AS customer_id,
 
   buildium_data.full_name,
 
@@ -95,10 +95,8 @@ SELECT
 
 buildium_data.rent_type,
 
-stg_feedback.full_date,		
-stg_feedback.customer_id,		
-stg_feedback.full_name,
-stg_feedback.address_id,		
+stg_feedback.full_date as notice_date,		
+stg_feedback.address_id as notice_address,		
 stg_feedback.intended_move_out_date,		
 stg_feedback.four_month_notice,		
 stg_feedback.reason_for_termination,		
