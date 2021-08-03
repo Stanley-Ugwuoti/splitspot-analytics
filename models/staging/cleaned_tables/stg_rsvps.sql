@@ -5,10 +5,9 @@ SELECT
   date(created_at) AS full_date,
   lower(event_type_name) AS event_type_name,
   cancellation,
-  status,
 
 IF
-  ( REGEXP_CONTAINS(event_type_name, r"(?i)Chat with a SplitSpot" ), "One-on-one calls",
+  ( REGEXP_CONTAINS(event_type_name, r"(?i)Chat" ), "One-on-one calls",
   IF
   ( ARRAY_LENGTH(SPLIT(event_type_name, '-'))>1,
   IF
@@ -23,6 +22,8 @@ IF
     "Live Showings")
    ) AS event_type
 FROM
-  `natural-rider-307113.calendly.calendly_stats`
-WHERE cancellation IS NULL
-ORDER BY created_at DESC
+  `natural-rider-307113.calendly.calendly_new_stats`
+  --`natural-rider-307113.calendly.rsvps`
+
+WHERE email is not NULL
+--ORDER BY full_date DESC

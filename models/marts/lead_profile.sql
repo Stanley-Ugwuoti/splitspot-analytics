@@ -26,7 +26,21 @@ SELECT
   lead_timeline.applications_date,
   lead_timeline.application_source,
   lead_timeline.application_length_of_stay as applications_intended_length_of_stay,
-  
+
+  CASE WHEN lead_timeline.application_length_of_stay = '3 Months (summer only)'  THEN '3'
+    WHEN lead_timeline.application_length_of_stay = '4 Months'  THEN '4'
+    WHEN lead_timeline.application_length_of_stay = '5 Months'  THEN '5'
+    WHEN lead_timeline.application_length_of_stay = '6 Months'  THEN '6'
+    WHEN lead_timeline.application_length_of_stay = '7 Months'  THEN '7'
+    WHEN lead_timeline.application_length_of_stay = '8 Months'  THEN '8'
+    WHEN lead_timeline.application_length_of_stay = '9 Months'  THEN '9'
+    WHEN lead_timeline.application_length_of_stay = '10 Months'  THEN '10'
+    WHEN lead_timeline.application_length_of_stay = '11 Months'  THEN '11'
+    WHEN lead_timeline.application_length_of_stay = '12+ Months'  THEN '12'
+       
+    ELSE 'Not Specified' END
+  AS estimated_rent_period,
+
   CASE WHEN lead_timeline.application_length_of_stay = '3 Months (summer only)'  THEN '3-5 months'
     WHEN lead_timeline.application_length_of_stay = '4 Months'  THEN '3-5 months'
     WHEN lead_timeline.application_length_of_stay = '5 Months'  THEN '3-5 months'
