@@ -26,4 +26,4 @@ FROM
   --`natural-rider-307113.calendly.rsvps`
 
 WHERE email is not NULL
---ORDER BY full_date DESC
+ORDER BY full_date DESC
