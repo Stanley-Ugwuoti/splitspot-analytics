@@ -18,7 +18,7 @@ SELECT
   leases_sent.rent_per_month,
   leases_signed.id as leases_signed_date,
   leases_signed.address_id as lease_signed_address,
-  leases_signed.duration_of_lease_signed_to_movein as wait_period,
+  --leases_signed.duration_of_lease_signed_to_movein as wait_period,
   leases_signed.source as lease_source,
   leases_signed.application_to_lease_duration as conversion_duration,
   leases_signed.intended_length_of_stay as lease_length_of_stay,

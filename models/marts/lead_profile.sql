@@ -65,15 +65,15 @@ SELECT
   lead_timeline.leases_signed_date,
   lead_timeline.lease_signed_address,
 
-  lead_timeline.wait_period,
+--  lead_timeline.tt_period,
 
-  CASE WHEN wait_period > 90 THEN 'over 3 months'
-    WHEN wait_period > 60 THEN '2-3 months'
-    WHEN wait_period > 30 THEN '1-2 months'
-    WHEN wait_period > 10 THEN '11-29 days'
-    WHEN wait_period < 10 THEN '0-10'
-    ELSE 'Not Specified' END
-  AS wait_period_category,
+--  CASE WHEN wait_period > 90 THEN 'over 3 months'
+--    WHEN wait_period > 60 THEN '2-3 months'
+--    WHEN wait_period > 30 THEN '1-2 months'
+--    WHEN wait_period > 10 THEN '11-29 days'
+--    WHEN wait_period < 10 THEN '0-10'
+--    ELSE 'Not Specified' END
+--  AS wait_period_category,
 
   lead_timeline.lease_source,
   lead_timeline.conversion_duration,
