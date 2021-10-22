@@ -21,4 +21,4 @@ WHERE
   row_num=1
 
 ORDER BY
-  full_date
+  full_date DESC
