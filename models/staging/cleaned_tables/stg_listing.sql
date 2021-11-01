@@ -16,8 +16,6 @@ WITH
     date(move_out_date) AS move_out_date,
     date(move_in_date) as move_in_date,
     lower(Landlord) as Landlords,
-    lower(building_pet_rule) as building_pet_rule,
-    lower(personal_pet_situation) as personal_pet_situation,
     lower(split(current_roommate_email_address, '; ')[SAFE_OFFSET(0)]) as current_tenant,
     lower(REPLACE(current_occupancy, 'N/A', 'onboarding')) as occupancy
   FROM
