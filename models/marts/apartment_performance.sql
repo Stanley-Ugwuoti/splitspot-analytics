@@ -3,6 +3,7 @@
 SELECT
   COALESCE(applications.fiscal_year,leases_signed.fiscal_year,leases_sent.fiscal_year,roommate.fiscal_year,webstats.fiscal_year) as fiscal_year,
   COALESCE(applications.year_week, leases_signed.year_week,leases_sent.year_week,roommate.year_week,webstats.year_week) as year_week,
+  COALESCE(applications.month, leases_signed.month,leases_sent.month, roommate.month, webstats.month) as month,
   COALESCE(applications.id, leases_signed.id,leases_sent.id,roommate.id,webstats.id) as full_date,
   COALESCE(applications.address_id,leases_signed.address_id,leases_sent.address_id,roommate.address_id,webstats.address_id) as address_id,
   IFNULL(webstats.unique_pageviews,0) as unique_pageviews,

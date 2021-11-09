@@ -13,7 +13,6 @@ SELECT
   neighborhood,
   city,
   date_onboarded,
-  building_pet_rule,
   AVG(price) as avg_price,
   COUNT(room) as number_of_rooms,
   COUNT(DISTINCT IF(current_tenant LIKE '%@%', current_tenant, NULL)) AS number_currently_occupied_rooms,
@@ -26,8 +25,7 @@ GROUP BY
   address_id,
   neighborhood,
   city,
-  date_onboarded,
-  building_pet_rule
+  date_onboarded
 ORDER BY
   avg_time_on_market_365 DESC
 
