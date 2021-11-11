@@ -12,7 +12,7 @@ WITH
     --DATE(move_in_date) AS move_in_date,
     --DATE_DIFF(DATE (move_in_date), DATE (date_signed), DAY) as duration_of_lease_signed_to_movein,
     LOWER(source) AS source,
-    LOWER(showing) AS showing,
+    LOWER(room) AS room,
     days_since_application AS application_to_lease_duration,
     LOWER(intended_length_of_stay) AS intended_length_of_stay,
     LOWER(neighbourhood) as city_neighbourhood,

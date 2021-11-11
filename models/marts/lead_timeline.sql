@@ -5,7 +5,10 @@ SELECT
   applications.contact_source as application_source, 
   applications.duration_till_optimal_move_in,
   applications.age,
-  applications.apartment_of_interest,
+  applications.apartment_of_interest_boston,
+  applications.apartment_of_interest_nyc,
+  applications.apartment_of_interest_seattle,
+  applications.apartment_of_interest_dc,
   applications.est_length_of_stay as application_length_of_stay,
   applications.occupation,
 

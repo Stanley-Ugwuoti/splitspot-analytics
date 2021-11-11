@@ -22,7 +22,10 @@ SELECT
   AS age_category,
 
   lead_timeline.occupation,
-  lead_timeline.apartment_of_interest,
+  lead_timeline.apartment_of_interest_boston,
+  lead_timeline.apartment_of_interest_nyc,
+  lead_timeline.apartment_of_interest_seattle,
+  lead_timeline.apartment_of_interest_dc,
   lead_timeline.applications_date,
   lead_timeline.application_source,
   lead_timeline.application_length_of_stay as applications_intended_length_of_stay,
