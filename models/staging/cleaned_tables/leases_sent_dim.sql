@@ -3,9 +3,9 @@
 WITH
   leases_sent AS (
   SELECT
-    DATE(timestamp) AS full_date,
+    DATE(date_sent) AS full_date,
     lower(email) AS customer_id,
-    lower(REPLACE(address_id,' ','-')) AS address_id,
+    lower(REPLACE(unit,' ','-')) AS address_id,
     room_letter,
     DATE(lease_start_date) AS lease_start_date,
     rent_per_month,
@@ -19,6 +19,6 @@ WITH
   FROM
     `natural-rider-307113.customer.leases_sent_import`
   WHERE
-    timestamp IS NOT NULL)
+    date_sent IS NOT NULL)
 SELECT * FROM leases_sent
 Order by full_date DESC

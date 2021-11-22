@@ -12,6 +12,7 @@ SELECT
   id,
   year_week,
   fiscal_year,
+  month,
   address_id,
   COUNT(*) AS roommate_intro
 FROM
@@ -19,6 +20,7 @@ FROM
 GROUP BY
   id,
   year_week,
+  month,
   fiscal_year,
   address_id
 ORDER BY

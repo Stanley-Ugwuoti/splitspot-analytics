@@ -1,11 +1,12 @@
 {{ config(materialized='table', sort='timestamp', dist='user_id') }}
 
+
 WITH
   customers AS (
   SELECT
     *
   FROM
-  {{ ref('applicant_pipeline') }}
+  {{ ref('lead_profile') }}
 )
 
 SELECT

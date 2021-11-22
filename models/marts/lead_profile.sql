@@ -7,7 +7,7 @@ SELECT
     lead_timeline.rsvps_date) AS full_date,
 
   COALESCE(lead_timeline.customer_id,
-    buildium_data.customer_id) AS customer_id,
+    buildium_data.customer_id, stg_feedback.customer_id ) AS customer_id,
 
   buildium_data.full_name,
 
@@ -22,11 +22,28 @@ SELECT
   AS age_category,
 
   lead_timeline.occupation,
-  lead_timeline.apartment_of_interest,
+  lead_timeline.apartment_of_interest_boston,
+  lead_timeline.apartment_of_interest_nyc,
+  lead_timeline.apartment_of_interest_seattle,
+  lead_timeline.apartment_of_interest_dc,
   lead_timeline.applications_date,
   lead_timeline.application_source,
   lead_timeline.application_length_of_stay as applications_intended_length_of_stay,
-  
+
+  CASE WHEN lead_timeline.application_length_of_stay = '3 Months (summer only)'  THEN '3'
+    WHEN lead_timeline.application_length_of_stay = '4 Months'  THEN '4'
+    WHEN lead_timeline.application_length_of_stay = '5 Months'  THEN '5'
+    WHEN lead_timeline.application_length_of_stay = '6 Months'  THEN '6'
+    WHEN lead_timeline.application_length_of_stay = '7 Months'  THEN '7'
+    WHEN lead_timeline.application_length_of_stay = '8 Months'  THEN '8'
+    WHEN lead_timeline.application_length_of_stay = '9 Months'  THEN '9'
+    WHEN lead_timeline.application_length_of_stay = '10 Months'  THEN '10'
+    WHEN lead_timeline.application_length_of_stay = '11 Months'  THEN '11'
+    WHEN lead_timeline.application_length_of_stay = '12+ Months'  THEN '12'
+       
+    ELSE 'Not Specified' END
+  AS estimated_rent_period,
+
   CASE WHEN lead_timeline.application_length_of_stay = '3 Months (summer only)'  THEN '3-5 months'
     WHEN lead_timeline.application_length_of_stay = '4 Months'  THEN '3-5 months'
     WHEN lead_timeline.application_length_of_stay = '5 Months'  THEN '3-5 months'
@@ -51,15 +68,15 @@ SELECT
   lead_timeline.leases_signed_date,
   lead_timeline.lease_signed_address,
 
-  lead_timeline.wait_period,
+--  lead_timeline.tt_period,
 
-  CASE WHEN wait_period > 90 THEN 'over 3 months'
-    WHEN wait_period > 60 THEN '2-3 months'
-    WHEN wait_period > 30 THEN '1-2 months'
-    WHEN wait_period > 10 THEN '11-29 days'
-    WHEN wait_period < 10 THEN '0-10'
-    ELSE 'Not Specified' END
-  AS wait_period_category,
+--  CASE WHEN wait_period > 90 THEN 'over 3 months'
+--    WHEN wait_period > 60 THEN '2-3 months'
+--    WHEN wait_period > 30 THEN '1-2 months'
+--    WHEN wait_period > 10 THEN '11-29 days'
+--    WHEN wait_period < 10 THEN '0-10'
+--    ELSE 'Not Specified' END
+--  AS wait_period_category,
 
   lead_timeline.lease_source,
   lead_timeline.conversion_duration,
@@ -81,13 +98,37 @@ SELECT
   buildium_data.room_id,
   buildium_data.status,
   buildium_data.start_date,
- -- buildium_data.end_date as buildium_end_date,
+  buildium_data.end_date as buildium_end_date,
   buildium_data.projected_end_date as actual_end_date,
   buildium_data.rent_duration as buildium_rent_duration,
-  buildium_data.rent_type,
+
+  CASE WHEN buildium_data.rent_duration > 10 THEN '10 months and above'
+    WHEN buildium_data.rent_duration > 5 THEN '6-9 months'
+    WHEN buildium_data.rent_duration < 6 THEN '3-5 months'
+
+    ELSE 'Not Specified' END
+
+      AS buildium_rent_duration_category,
+
+buildium_data.rent_type,
+
+stg_feedback.full_date as notice_date,		
+stg_feedback.address_id as notice_address,		
+stg_feedback.intended_move_out_date,		
+stg_feedback.four_month_notice,		
+stg_feedback.reason_for_termination,		
+stg_feedback.interested_in_other_splitspot_rooms,
+stg_feedback.moving_out_agreement,		
+stg_feedback.positive_feedback,		
+stg_feedback.rating,
+stg_feedback.critical_feedback
 
 FROM
-  `natural-rider-307113`.`dbt_kamalsplitspot`.`lead_timeline` as lead_timeline
-FULL JOIN  `natural-rider-307113`.`dbt_kamalsplitspot`.`buildium_tenancy` AS buildium_data
+{{ ref('lead_timeline') }} as lead_timeline
+FULL JOIN {{ ref('buildium_tenancy') }} AS buildium_data
 ON
   lead_timeline.customer_id = buildium_data.customer_id
+
+FULL JOIN {{ ref('stg_feedback') }} AS stg_feedback
+ON
+  lead_timeline.customer_id = stg_feedback.customer_id

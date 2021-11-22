@@ -7,6 +7,10 @@ WITH
     applicant_full_name,
     lower(applicant_email) as customer_id,
     lower(apartment_of_interest) as apartment_of_interest,
+    lower(apartment_of_interest) as apartment_of_interest_boston,
+    lower(apartment_of_interest_nyc) as apartment_of_interest_nyc,
+    lower(apartment_of_interest_dc) as apartment_of_interest_dc,
+    lower(apartment_of_interest_seattle) as apartment_of_interest_seattle,
     attended_showing,
     lower(interested_neigbourhoods) as interested_neigbourhoods,
     lower(contact_source) as contact_source,
@@ -18,7 +22,7 @@ WITH
     pets_ as have_pets,
     lower(ok_living_with_pets_) as ok_living_with_pets_,
     SAFE_CAST(monthly_gross_salary AS NUMERIC) as monthly_gross_salary,
-    lower(occupation) as occupation
+    lower(occupation) as occupation,
   FROM
     `natural-rider-307113.customer.applications_response_import`
   WHERE

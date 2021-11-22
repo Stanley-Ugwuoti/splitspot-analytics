@@ -3,6 +3,7 @@
 SELECT
   id,
   year_week,
+  month,
   fiscal_year,
   address_id,
   SUM(users) AS users,
@@ -14,6 +15,7 @@ FROM
   --year_week = 14
 GROUP BY
   id,
+  month,
   year_week,
   fiscal_year,
   address_id
