@@ -32,7 +32,7 @@ LEFT JOIN
 ON
   listings.google_sheets_id = time_market.google_id
 LEFT JOIN
-  {{ ref('listings_description') }} AS description
+  {{ ref('apartment_listings_description') }} AS description
 ON
   listings.google_sheets_id = description.id
 

@@ -1,0 +1,2 @@
+--used to unpivot apartment applications
+{{ dbt_utils.unpivot(ref('applicant_split'), cast_to='string', exclude=['full_date','applicant_full_name','customer_id','attended_showing','neigbourhoods1','neigbourhoods2','neigbourhoods3','neigbourhoods4','neigbourhoods5','contact_source','optimal_move_in_date','date_of_birth','est_length_of_stay','have_pets','pet1','pet2','monthly_gross_salary']) }}
