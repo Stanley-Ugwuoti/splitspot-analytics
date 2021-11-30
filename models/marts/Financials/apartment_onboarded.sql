@@ -3,11 +3,11 @@
 
 WITH listings AS (
     SELECT 
-        google_sheets_id,
-            address_id,
-                date_onboarded,
-                    city,
-                        Landlords,
+    google_sheets_id,
+    address_id,
+    date_onboarded,
+    city,
+    Landlords,
     FROM {{ref('stg_listing')}}
 ),
 units_onboarded AS (
@@ -19,11 +19,11 @@ units_onboarded AS (
 -- To include the total number of rooms for each distinct address
 
 SELECT DISTINCT(address_id),
-        date_onboarded,
-            DATE_TRUNC(date_onboarded,MONTH) AS month_start,
-                city,
-                    Landlords,
-                        no_of_rooms 
+date_onboarded,
+DATE_TRUNC(date_onboarded,MONTH) AS month_start,
+city,
+Landlords AS landlord_name,
+no_of_rooms 
 FROM units_onboarded
-WHERE NULLIF(STRING(date_onboarded),'')  IS NOT NULL AND date_onboarded IS NOT NULL
+WHERE NULLIF(STRING(date_onboarded),'')  != ''
 ORDER BY 1
