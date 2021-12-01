@@ -28,13 +28,7 @@ Then you run
 pip3 install --user --upgrade dbt-bigquery
 ```
 
-If you get an error like /usr/local/bin/python3.7: bad interpreter: No such file or directory, uninstall dbt and reinstall.
-```
-$ pip3 uninstall dbt-core
-$ pip3 install --user --upgrade dbt-bigquery
-```
-
-Your dbt is in ``` ~/.local/bin/dbt ``` which you can add to path i your .bashrc in mac/linux if you wish to.
+Your dbt is in ``` ~/.local/bin/dbt ``` which you can add to path in your .bashrc in mac/linux if you wish to.
 On windows follow this tutorial [here](https://www.dataduel.co/install-dbt-on-win10-april-2021/)
 
 Then you need to setup the dbt profile which is basically what the dbt refers to when it wants to run the entire queries with dbt run
@@ -61,6 +55,15 @@ Now you can run
 or if you have dbt in path you run
 ```
 dbt run
+```
+
+## Troubleshooting
+
+
+If you get an error like /usr/local/bin/python3.7: bad interpreter: No such file or directory, uninstall dbt and reinstall.
+```
+$ pip3 uninstall dbt-core
+$ pip3 install --user --upgrade dbt-bigquery
 ```
 
 If you have issues with versioning when you try to run dbt then run

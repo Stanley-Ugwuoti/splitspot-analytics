@@ -1,8 +1,8 @@
 default:
-        target: dev
-        outputs:
-                dev:
-                        type: bigquery
-                        method: oauth
-                        project: sandbox-sheet-305814
-                        dataset: dbt_transform
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: sandbox-sheet-305814
+      dataset: dbt_transform
