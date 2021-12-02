@@ -1,8 +1,8 @@
 SELECT 
 DATE(date_) AS date,
-Category,
+category,
 type,
-Classification,
+classification,
 item,
-Costs
+costs
 FROM `natural-rider-307113.Financials.customer_acquisition_cost`
