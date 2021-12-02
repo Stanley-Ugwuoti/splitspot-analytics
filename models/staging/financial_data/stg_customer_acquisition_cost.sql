@@ -4,5 +4,5 @@ category,
 type,
 classification,
 item,
-costs
+costs AS cost
 FROM `natural-rider-307113.Financials.customer_acquisition_cost`
