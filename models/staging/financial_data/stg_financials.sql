@@ -3,8 +3,8 @@
   SELECT
     DATE(date) AS full_date,
     UPPER(term) AS term,
-    apartment_id,
-    total_rental_income,
+    LOWER(REPLACE(apartment_id,' ','-')) AS address_id,
+    ROUND(total_rental_income,2) AS rental_income,
     CAST(vacancy_trigger AS BOOL) AS vacancy_trigger,
     CAST(minimum_trigger AS BOOL) AS minimum_trigger,
     revenue_share,
