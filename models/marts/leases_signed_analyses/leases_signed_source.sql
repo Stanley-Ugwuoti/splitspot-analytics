@@ -11,6 +11,7 @@ SELECT
   year_week,
   month,
   fiscal_year,
+  start_month,
   lower(source) as source,
   COUNT(*) AS no_of_leases
 FROM
@@ -20,6 +21,7 @@ GROUP BY
   year_week,
   month,
   fiscal_year,
+  start_month,
   source
 ORDER BY
   no_of_leases DESC
