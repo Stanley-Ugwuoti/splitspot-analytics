@@ -70,3 +70,8 @@ If you have issues with versioning when you try to run dbt then run
 ```
 ~/.local/bin/dbt run --no-version-check
 ```
+
+If you get ERROR: gcloud failed to load: No module named '_sqlite3' because you use python with adf try running
+```
+export CLOUDSDK_PYTHON=/usr/bin/python3
+```
