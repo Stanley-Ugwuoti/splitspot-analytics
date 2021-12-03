@@ -15,10 +15,10 @@ leases AS(
     FROM {{ ref ('leases_signed_source')}}
     GROUP BY 1
 )
-    SELECT 
-        start_month,
-        total_cost,
-        lease_count
-    FROM leases 
-    LEFT JOIN tenant_cost AS tenant_cac ON leases.start_month = tenant_cac.month_start
+SELECT 
+    start_month,
+    total_cost,
+    lease_count
+FROM leases 
+LEFT JOIN tenant_cost AS tenant_cac ON leases.start_month = tenant_cac.month_start
 
