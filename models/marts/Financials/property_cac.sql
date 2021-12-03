@@ -3,7 +3,7 @@
 WITH property_cost AS(
     SELECT
         DATE_TRUNC(date,MONTH) AS month_start,
-        ROUND(SUM(costs),2) AS total_cost
+        ROUND(SUM(cost),2) AS total_cost
     FROM {{ ref ('stg_customer_acquisition_cost')}}
     WHERE type = 'Property'
     GROUP BY 1
@@ -17,9 +17,9 @@ apt_onboarded_grouped AS (
 
 -- To group on-boarded apartments by month start for easy joining
 )
-    SELECT 
-        month_start,
-        total_cost,
-        rooms_onboarded  
-    FROM property_cost
-    LEFT JOIN  apt_onboarded_grouped AS apartment_onboarded ON property_cost.month_start = apartment_onboarded.start_month
+SELECT 
+    month_start,
+    total_cost,
+    rooms_onboarded  
+FROM property_cost
+LEFT JOIN  apt_onboarded_grouped AS apartment_onboarded ON property_cost.month_start = apartment_onboarded.start_month
