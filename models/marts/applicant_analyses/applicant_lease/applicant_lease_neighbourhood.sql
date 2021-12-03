@@ -15,7 +15,7 @@ SELECT
     0) AS no_of_leases,
 
 FROM
-  {{ ref('neighbourhood_aggregation') }} AS applications
+  {{ ref('applicant_neighbourhood_aggregation') }} AS applications
 FULL JOIN
   {{ ref('leases_neighbourhood') }} AS leases_signed
 ON

@@ -5,7 +5,7 @@
   SELECT
     *
   FROM
-    {{ ref('joined_listings') }}
+    {{ ref('apartment_joined_listings') }}
   WHERE
     address_id IS NOT NULL )
 SELECT
