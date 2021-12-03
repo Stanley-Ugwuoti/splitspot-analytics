@@ -35,7 +35,7 @@ Then you need to setup the dbt profile which is basically what the dbt refers to
 
 on new cmd run 
 ```
- cd $HOME && touch .dbt/profile.yml && nano .dbt/profiles.yml
+ cd $HOME && touch .dbt/profile.yml && nano .dbt/profile.yml
 ```
 Then paste the contents of profile.example.yml file into the newly created .dbt/profile.yml
 
