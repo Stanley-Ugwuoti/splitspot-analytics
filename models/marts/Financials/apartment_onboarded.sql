@@ -14,7 +14,7 @@ units_onboarded AS (
     SELECT 
         * 
      FROM listings
-     LEFT JOIN {{ref('listings_description')}} ON listings.google_sheets_id = listings_description.id
+     LEFT JOIN {{ref('apartment_listings_description')}} AS apartment_listing ON listings.google_sheets_id = apartment_listing.id
 )
 -- To include the total number of rooms for each distinct address
 
