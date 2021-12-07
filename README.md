@@ -15,63 +15,43 @@ Try running the following commands:
 - Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
 
 ### How to Install and use
-Make sure you have python installed on your system, if you don't, download and install python 3.6 and above if you're on windows,
-on linux or mac python comes preinstalled.
-
 First you clone this project by running 
 ```
 git clone https://github.com/splitspot/splitspot-analytics.git && cd splitspot-analytics
 ```
 
-Then you run 
+This is a python project whose dependencies are managed with poetry so you will first need to start by installing python (3.8) and then install poetry.
 ```
-pip3 install --user --upgrade dbt-bigquery
+pip3 install poetry
 ```
-
-Your dbt is in ``` ~/.local/bin/dbt ``` which you can add to path in your .bashrc in mac/linux if you wish to.
-On windows follow this tutorial [here](https://www.dataduel.co/install-dbt-on-win10-april-2021/)
 
 Then you need to setup the dbt profile which is basically what the dbt refers to when it wants to run the entire queries with dbt run
 
 on new cmd run 
 ```
- cd $HOME && touch .dbt/profile.yml && nano .dbt/profile.yml
+ cd $HOME && touch .dbt/profiles.yml && nano .dbt/profiles.yml
 ```
-Then paste the contents of profile.example.yml file into the newly created .dbt/profile.yml
+Then paste the contents of profiles.example.yml file into the newly created .dbt/profiles.yml
 
-Then install gcloud following the instructions here https://cloud.google.com/sdk/docs/install
+To install all the packages dependencies run `poetry install` which wil also create/activate a virtual environment to use for the project.
 
-Then run
+After installing dependencies you will need to authenticate gcloud so you can connect to the bigquery database
+
 ```
-gcloud auth application-default login
+poetry run gcloud auth application-default login
 ```
 A window will open in the browser where you'll login and copy a code sent to you and paste in the commandline.
 
-Now you can run
+To run any of the DBT commands you must prefix with `poetry run` like the folloing:
 ```
-~/.local/bin/dbt run
+poetry run dbt run
 ```
 
-or if you have dbt in path you run
-```
-dbt run
-```
+or you can run `poetry shell` which will activate the virtual environment and prevent the need to prepend the commands with `poetry run`.
 
 ## Troubleshooting
 
-
-If you get an error like /usr/local/bin/python3.7: bad interpreter: No such file or directory, uninstall dbt and reinstall.
-```
-$ pip3 uninstall dbt-core
-$ pip3 install --user --upgrade dbt-bigquery
-```
-
-If you have issues with versioning when you try to run dbt then run
-```
-~/.local/bin/dbt run --no-version-check
-```
-
-If you get ERROR: gcloud failed to load: No module named '_sqlite3' because you use python with adf try running
+If you get ERROR: gcloud failed to load: No module named '_sqlite3' because you use python with asdf try running
 ```
 export CLOUDSDK_PYTHON=/usr/bin/python3
 ```
