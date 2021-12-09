@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: model
+    tables: 
+      - name: listings
+      - name: time_on_market
+      - name: listing_description
+      - name: full_unit_address
+      - name: rsvps
+      - name: calendly_new_stats
+      - name: web_stats
+      - name: leases_signed_by_source
+      - name: feedback_form
+      - name: buildium_tenancy_data
+      - name: customer_acquisition_cost
+      - name: financial_income_statement
+      - name: ramp_up_details

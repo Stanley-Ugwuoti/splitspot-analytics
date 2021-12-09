@@ -19,5 +19,5 @@
     outstanding_payments_closing AS receivables_closing_balance
 
   FROM
-    `natural-rider-307113.Financials.financial_income_statement`
+    {{source('model','financial_income_statement')}}
     WHERE date IS NOT NULL

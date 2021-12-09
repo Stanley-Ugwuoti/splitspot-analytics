@@ -19,7 +19,7 @@ WITH
     REPLACE(SPLIT(LOWER(neighbourhood), ' - ')[SAFE_OFFSET(1)], ' ', '-') as neighbourhood
 
   FROM
-    `natural-rider-307113.customer.leases_signed_by_source`
+    {{source('model','leases_signed_by_source')}}
   WHERE
     date_signed IS NOT NULL)
 SELECT * FROM leases

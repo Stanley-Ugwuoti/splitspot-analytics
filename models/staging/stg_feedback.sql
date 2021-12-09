@@ -14,6 +14,6 @@ room_letter,
 critical_feedback
 
 FROM
-  `natural-rider-307113.customer.feedback_form`
+ {{source('model','feedback_form')}}
 WHERE email_address IS NOT NULL
 ORDER BY full_date DESC

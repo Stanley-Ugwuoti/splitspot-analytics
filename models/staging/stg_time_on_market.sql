@@ -6,7 +6,7 @@ WITH
   SELECT
     *
   FROM
-    `natural-rider-307113.apartment.time_on_market`)
+    {{source('model','time_on_market')}}
 SELECT
   *
 FROM
