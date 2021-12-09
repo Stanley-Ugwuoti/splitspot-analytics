@@ -5,4 +5,4 @@ type,
 classification,
 item,
 costs AS cost
-FROM {{source('model','customer_acquisition_cost')}}
+FROM {{source('financials','customer_acquisition_cost')}}

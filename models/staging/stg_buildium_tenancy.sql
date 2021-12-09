@@ -18,7 +18,7 @@ WITH
     current_date() as date_today,
 
   FROM
-   {{source('model','buildium_tenancy_data')}}
+   {{source('customer','buildium_tenancy_data')}}
   WHERE
     login_email IS NOT NULL)
 

@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+  - name: apartment
+    schema: apartment
+    database: "{{ env_var('DBT_DATABASE', 'sandbox-sheet-305814') }}"
+    tables: 
+      - name: listings
+      - name: time_on_market
+      - name: listing_description
+      - name: full_unit_address
+
+  - name: financials
+    database: "{{ env_var('DBT_DATABASE', 'sandbox-sheet-305814')}}"
+    schema: Financials
+    tables: 
+      - name: customer_acquisition_cost
+      - name: financial_income_statement
+      - name: ramp_up_details
+
+  - name: calendly
+    database: "{{ env_var('DBT_DATABASE', 'sandbox-sheet-305814') }}"
+    schema: calendly
+    tables: 
+      - name: rsvps
+
+  - name: customer
+    database: "{{ env_var('DBT_DATABASE', 'sandbox-sheet-305814')}}"
+    schema: customer
+    tables: 
+      - name: leases_signed_by_source
+      - name: feedback_form
+      - name: buildium_tenancy_data
+      - name: applications_response_import
+  
+  - name: web_data
+    database: "{{ env_var('DBT_DATABASE', 'sandbox-sheet-305814') }}"
+    schema: web_data
+    tables: 
+      - name: web_stats

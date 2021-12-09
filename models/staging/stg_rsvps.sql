@@ -22,8 +22,7 @@ IF
     "Live Showings")
    ) AS event_type
 FROM
- {{source('model','calendly_new_stats')}}
-  --`natural-rider-307113.calendly.rsvps`
+ {{source('calendly','rsvps')}}
 
 WHERE email is not NULL
 ORDER BY full_date DESC
