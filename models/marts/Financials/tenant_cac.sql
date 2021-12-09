@@ -10,13 +10,13 @@ WITH tenant_cost AS (
 ),
 leases AS(
     SELECT
-        start_month,
+        month_start,
         SUM(no_of_leases) AS lease_count,
     FROM {{ ref ('leases_signed_source')}}
     GROUP BY 1
 )
 SELECT 
-    start_month,
+    leases.month_start,
     total_cost,
     lease_count
 FROM leases 
