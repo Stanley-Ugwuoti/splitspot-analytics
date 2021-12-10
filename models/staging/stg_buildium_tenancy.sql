@@ -8,6 +8,7 @@ WITH
   SELECT
     concat(first_name, " ",last_name) AS full_name,
     LOWER(login_email) AS customer_id,
+    id AS buildium_tenant_id,
     leaseid,
     rent_fee,
     unit_number as room_id,
@@ -25,6 +26,7 @@ WITH
 SELECT
 full_name,
 customer_id,
+buildium_tenant_id,
 leaseid,
 address_id,
 rent_fee,

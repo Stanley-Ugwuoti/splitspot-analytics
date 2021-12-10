@@ -4,6 +4,7 @@
 SELECT
 full_name,
 customer_id,
+buildium_tenant_id,
 leaseid,
 address_id,
 rent_fee,
