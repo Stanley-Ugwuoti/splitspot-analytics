@@ -20,5 +20,5 @@ SELECT
     total_cost,
     lease_count
 FROM leases 
-LEFT JOIN tenant_cost AS tenant_cac ON leases.start_month = tenant_cac.month_start
+LEFT JOIN tenant_cost AS tenant_cac ON leases.month_start = tenant_cac.month_start
 
