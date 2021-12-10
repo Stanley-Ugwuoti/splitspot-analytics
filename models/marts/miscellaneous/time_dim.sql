@@ -14,7 +14,7 @@ SELECT
   FORMAT_DATE('%w', d) AS week_day,
   FORMAT_DATE('%A', d) AS day_name,
   (CASE WHEN FORMAT_DATE('%A', d) IN ('Sunday', 'Saturday') THEN 0 ELSE 1 END) AS day_is_weekday,
-  DATE_TRUNC(d, MONTH ) AS start_month
+  DATE_TRUNC(d, MONTH ) AS month_start
 FROM (
   SELECT
     *
