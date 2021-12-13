@@ -1,8 +1,8 @@
 -- Ramp up end dates by apartments
 
 SELECT 
-UPPER(term) = 'RS' AS Revenue_share,
-apartment_id,
+    UPPER(term) = 'RS' AS Revenue_share,
+    LOWER(REPLACE(apartment_id,' ','-')) AS address_id,
 CASE 
     WHEN ramp_up_end_date IN ('','N/A') THEN NULL 
     ELSE CAST(CAST(ramp_up_end_date AS TIMESTAMP) AS DATE)
