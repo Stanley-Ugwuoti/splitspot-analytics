@@ -19,5 +19,5 @@
     outstanding_payments_closing AS receivables_closing_balance
 
   FROM
-    {{source('financials','financial_income_statement')}}
+    {{ source('financials','financial_income_statement') }}
     WHERE date IS NOT NULL

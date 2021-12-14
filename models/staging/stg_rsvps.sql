@@ -22,7 +22,7 @@ IF
     "Live Showings")
    ) AS event_type
 FROM
- {{source('calendly','rsvps')}}
+ {{ source('calendly','calendly_new_stats') }}
 
 WHERE email is not NULL
 ORDER BY full_date DESC

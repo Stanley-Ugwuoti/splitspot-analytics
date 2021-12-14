@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: apartment
+  - name: apartments
     schema: apartment
     database: "{{ env_var('DBT_DATABASE', 'sandbox-sheet-305814') }}"
     tables: 
@@ -23,8 +23,9 @@ sources:
     schema: calendly
     tables: 
       - name: rsvps
+      - name: calendly_new_stats
 
-  - name: customer
+  - name: customers
     database: "{{ env_var('DBT_DATABASE', 'sandbox-sheet-305814')}}"
     schema: customer
     tables: 

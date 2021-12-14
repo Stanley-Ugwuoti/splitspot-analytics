@@ -14,6 +14,6 @@ room_letter,
 critical_feedback
 
 FROM
- {{source('customer','feedback_form')}}
+ {{ source('customers','feedback_form') }}
 WHERE email_address IS NOT NULL
 ORDER BY full_date DESC

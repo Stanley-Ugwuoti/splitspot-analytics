@@ -6,7 +6,7 @@ WITH
   SELECT
     *
   FROM
-    {{source('apartment','time_on_market')}}
+    {{ source('apartments','time_on_market') }}
   )
   
 SELECT
