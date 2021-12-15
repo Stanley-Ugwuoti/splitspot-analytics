@@ -19,7 +19,7 @@ WITH
     lower(split(current_roommate_email_address, '; ')[SAFE_OFFSET(0)]) as current_tenant,
     lower(REPLACE(current_occupancy, 'N/A', 'onboarding')) as occupancy
   FROM
-    `natural-rider-307113.apartment.listings`
+    {{ source('apartments','listings') }}
   WHERE
     address_unit IS NOT NULL)
 SELECT

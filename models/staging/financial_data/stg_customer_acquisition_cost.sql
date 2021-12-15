@@ -5,4 +5,4 @@ type,
 classification,
 item,
 costs AS cost
-FROM `natural-rider-307113.Financials.customer_acquisition_cost`
+FROM {{ source('financials','customer_acquisition_cost') }}

@@ -26,7 +26,7 @@ WITH
     SAFE_CAST(monthly_gross_salary AS NUMERIC) as monthly_gross_salary,
     lower(occupation) as occupation,
   FROM
-    `natural-rider-307113.customer.applications_response_import`
+    {{ source('customers','applications_response_import') }}
   WHERE
     application_date IS NOT NULL)
 select * from customers
