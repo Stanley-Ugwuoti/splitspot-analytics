@@ -7,7 +7,8 @@ SELECT
     applicant_no_of_missing_payment,
     cosigner_credit_score,
     cosigner_no_of_missing_payment,
-    lease_sent, lease_signed
+    lease_sent,
+    lease_signed
 
 FROM {{source('customer', 'credit_score_metrics')}}
 
