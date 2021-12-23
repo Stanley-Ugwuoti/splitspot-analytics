@@ -33,6 +33,7 @@ sources:
       - name: feedback_form
       - name: buildium_tenancy_data
       - name: applications_response_import
+      - name: stg_credit_score_metrics
   
   - name: web_data
     database: "{{ env_var('DBT_DATABASE', 'sandbox-sheet-305814') }}"
